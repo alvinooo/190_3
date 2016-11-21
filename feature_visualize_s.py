@@ -50,7 +50,7 @@ def build_net():
     grads /= (K.sqrt(K.mean(K.square(grads))) + 1e-5)
     iterate = K.function([input_img], [loss, grads])
     
-    input_img_data = np.random.random((1, 16, 16, 32)) * 20 + 128 
+    input_img_data = np.random.random((1, 32, 32, 3)) * 20 + 128 
     for i in range(20):
      loss_value, grads_value = iterate([input_img_data])
      input_img_data += grads_value * 0.01
