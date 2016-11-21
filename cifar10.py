@@ -52,7 +52,7 @@ def build_net():
     model.pop()
     model.add(Dense(categories, 'glorot_normal', activation="softmax", name='dense_2'))
 
-    model.compile(optimizer=optimizers.SGD(lr=5e-4, momentum=0.9),
+    model.compile(optimizer=optimizers.SGD(lr=1e-3, momentum=0.9),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
