@@ -8,13 +8,13 @@ from keras import backend as K
 import sys
 
 # dimensions of the generated pictures for each filter.
-img_width = 32 
+img_width = 32
 img_height = 32
 filters_layer1 = []
 filters_layer2 = []
 
 n1 = int(sys.argv[1])
-n2 = int(sys.argv[2]) 
+n2 = int(sys.argv[2])
 
 model = load_model("cifar100_deep.h5")
 # this is the placeholder for the input images
@@ -81,7 +81,7 @@ def compute_gradient_ascent(layer_name, num_filters):
         input_img_data = (input_img_data - 0.5) * 20 + 128
 
     # we run gradient ascent for 20 steps
-        for i in range(20):
+        for i in range(100):
             loss_value, grads_value = iterate([input_img_data, 0] )
             input_img_data += grads_value * step
 
@@ -99,13 +99,13 @@ def compute_gradient_ascent(layer_name, num_filters):
         if(layer_name == "convolution2d_2"):
             filters_layer2.append(img)
 
-    
+
 def feauture_visualize_layer():
-    
+
     layer_name_1 = "convolution2d_1"
-      
+
     compute_gradient_ascent(layer_name_1, 32 )
-    
+
     layer_name_2 = "convolution2d_2"
 
     compute_gradient_ascent(layer_name_2, 64)
